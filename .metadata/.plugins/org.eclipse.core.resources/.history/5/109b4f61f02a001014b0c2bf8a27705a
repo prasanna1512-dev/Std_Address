@@ -1,0 +1,5 @@
+package com.example.stdaddress.entity;
+
+public class StudentAddress {
+
+}

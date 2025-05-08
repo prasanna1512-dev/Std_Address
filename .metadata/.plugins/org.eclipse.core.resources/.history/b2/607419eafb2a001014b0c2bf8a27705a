@@ -1,0 +1,19 @@
+package com.example.stdaddress.Repository;
+
+import java.util.Optional;
+
+import org.apache.tomcat.jni.Address;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AddressRepo extends JpaRepository<AddressRepo, Integer> {
+
+    @Query(
+        nativeQuery = true,
+        value
+        = "SELECT st.rollno, st.city, st.state FROM std_db.std_address sa join std_db.std s on s.rollno = sa.std_rollno where sa.std_rollno =:studentRollno")
+       Optional<Address> findAddressByStudentRollno(@Param("studentRollno")  int studentRollno);
+}

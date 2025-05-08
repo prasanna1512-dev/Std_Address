@@ -1,0 +1,5 @@
+package com.example.stdaddress.Configuration;
+
+public class StdAddressConfig {
+
+}

@@ -1,0 +1,27 @@
+package com.example.stdaddress.Service;
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
+import org.springframework.stereotype.Service;
+
+import com.example.stdaddress.Repository.AddressRepo;
+import com.example.stdaddress.Response.AddressResponse;
+
+@Service
+public class AddressService {
+
+    @Autowired
+    private AddressRepo addressRepo;
+
+    @Autowired
+    private ModelMapper mapper;
+
+    public AddressResponse findAddressByEmployeeId(int stdRollno) {
+        Optional<Address> addressByStdRollno = addressRepo.findAddressByStudentRollno(stdRollno);
+        AddressResponse addressResponse = mapper.map(addressByStdRollno, AddressResponse.class);
+        return addressResponse;
+    }
+
+}

@@ -1,0 +1,5 @@
+package com.example.stdaddress.Repository;
+
+public class AddressRepo {
+
+}
